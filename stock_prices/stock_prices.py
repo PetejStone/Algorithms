@@ -10,80 +10,28 @@ def find_max_profit(prices):
  ## go through array second time up to the biggest number and find the SMALLEST number
  ## subtract the smallest number from the biggest number
      # loop through n-1 elements
-    cur_max = 1 #start at the zero index
-    cur_min = 0
-    new_arr = []
-    for i in range(1, len(prices)):
-        if prices[i] > prices[cur_max ]:
-            cur_max = i
-            
-            new_arr = prices[ 1: 4]
+    cur_max = 1 #start at the one index -- start one index because the first element CANT be the biggest
+    cur_min = 0  #set current min to zero index because once that max is found, the array stops -- so the current min may be larger than the cur max
+    new_arr = [] # set black array for when splitting
+    for i in range(1, len(prices)): # start at the first index because we don't want to consider the first element
+        if prices[i] > prices[cur_max ]: # if the item is greater than the current max,
+            cur_max = i #set current max to that index -- this will keep changing until it reaches the highest # in the array
+             
+            new_arr = prices[ : cur_max] #split everything AFTER the current max is found
        
-            
-       
-        # if len(new_arr) == 0:
-        #     new_arr = prices
-            
-            
-        # else:
-        #     new_arr = new_arr
-        # for j in range(len(new_arr)):
-        #     if prices[j] < prices[cur_min]:
-        #         cur_min = j
-        #         print(prices[cur_min])
-    print(f'LENGTH {new_arr}')
-    print(f'CURRENT MAX {prices[cur_max]}')
-    print(f'CURRENT_MIN {prices[cur_min]}' )
-   # subtract = prices[cur_max] - prices[cur_min]
+
+        for j in range(len(new_arr)): # new variable for finding min
+            if prices[j] < prices[cur_min]: #if a number is found that is less than the first index
+                cur_min = j #set that to the new min
+                print(prices[cur_min])
+    print(f'NEW ARRAY {new_arr}') # new split array
+    print(f'CURRENT MAX {prices[cur_max]}') #current max value
+    print(f'CURRENT_MIN {prices[cur_min]}' ) #current min value
+    subtract = prices[cur_max] - prices[cur_min] #subtract the curent max from the min
     #print(f'SUBTRACT {subtract}')
-    #return subtract
-    
-    
-
-       # print(prices[i]
+    return subtract #return subtracted value
+     
   
-                    
-        # SWAP 
-        ###swap example
-        #####         > <
-        ## swap [ 1,2,4,3,5 ]
-        ## inside loop found that 4 is > 3, so new cur_index is 3 (3)
-        ### temp = arr[2] (4) - the current position, so temp value is 4
-        #### arr[2] == arr[3] -- so 4 is now = 3 -> [1,2,3,3,5]
-        ###### arr[cur_index] (arr[3]) == 4 -> [1,2,3,4,5]
-
-        ####
-        # temp = arr[i] #temp variable is == the current position in the outside loop
-    
-        # arr[i] = arr[cur_index] #current position of outside loop is set equal to the new current index from the inside loop
-       
-        # arr[cur_index] = temp #current index is set equal to the temp variable
-
-    # for i in range(len(prices)):
-    #   if prices[i] > prices[i + 1]:
-    #     current_max = prices[i]
-    #   else:
-    #     current_max = prices[i + 1]
-    #   print(f'current_max: {current_max}')
-    #   new_arr = prices[ : i]
-    #   print(f"prices: {new_arr}")
-    #   for j in range(len(new_arr)):
-    #     if prices[j] < prices[j + 1]:
-    #       current_min = prices[j]
-    #     else:
-    #       current_min = prices[j + 1]
-    #     print(f'current min {current_min}')
-    #     #print(prices(j))
-
-          
-   
-    
-
-    
- 
- 
-  
-
 
 if __name__ == '__main__':
   # This is just some code to accept inputs from the command line
