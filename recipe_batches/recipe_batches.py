@@ -3,7 +3,28 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+
+  ## to get key -- key in recipe
+  ## to get value -- value in recipe.values
+  ingredients_left = []
+  for key, key in zip(recipe, ingredients):
+      if len(recipe) > len(ingredients):
+          return 0
+      else:
+          ingredients_left.append(ingredients[key] - recipe[key])
+          print(ingredients_left)
+          for i in ingredients_left:
+              if i == 0:
+                  print('we are out')
+                  
+                  break
+              else:
+                    print('we are good')
+          
+          
+    
+  
+
 
 
 if __name__ == '__main__':

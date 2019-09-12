@@ -1,6 +1,10 @@
 import unittest
 from recipe_batches import recipe_batches
 
+
+## Recipe array, value == amount needed
+## ingredients array , value == amount available
+## if recipe amount > ingredient amount, return false
 class Test(unittest.TestCase):
 
   def test_recipe_batches(self):
