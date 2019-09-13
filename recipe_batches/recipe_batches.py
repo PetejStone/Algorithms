@@ -16,26 +16,28 @@ def recipe_batches(recipe, ingredients):
  
   def calc(recipe, ingredients_left, temp_arr, batches, done = False ):
       done = False
-      
-      for key, i in zip(recipe, ingredients_left):
-         print('INGREDIENT KEY')
-         subtract = i - recipe[key]
-         
-         if subtract > 0:
-            temp_arr.append(i - recipe[key])
-            ingredients_left = temp_arr
-            batches += 1
-            
+      if len(recipe.values()) > len(ingredients_left):
+        return 0
+      else:
+        for key, i in zip(recipe, ingredients_left):
+          print('INGREDIENT KEY')
+          subtract = i - recipe[key]
+          
+          if subtract > 0:
+              temp_arr.append(i - recipe[key])
+              ingredients_left = temp_arr
+              batches += 1
+              
 
-            
-         else:
-            print('I AM DONE')
-            temp_arr.append(i - recipe[key])
-            ingredients_left = temp_arr
+              
+          else:
+              print('I AM DONE')
+              temp_arr.append(i - recipe[key])
+              ingredients_left = temp_arr
+              #batches += 1
 
-
-            done = True
-            #
+              done = True
+              #
             
              
         
@@ -44,18 +46,25 @@ def recipe_batches(recipe, ingredients):
       temp_arr = []
       
       print('TEMP ARRAY NOW')
-      #print(ingredients_left)
+      print(ingredients_left)
       print(batches)
       print(done)
-      
+      #batches += 1
       if done == True:
           print('true')
           print('BATCHES')
           length = len(ingredients_left)
-          batches = batches/length
-          
-          return batches
-          
+          print(length)
+          batches = batches//length
+          if batches == 0:
+             return 1
+          elif len(ingredients_left) == 1:
+             batches += 1
+             return batches
+
+          else:
+             return batches
+              
       else:
           print('false')
           print(ingredients_left)
@@ -65,7 +74,7 @@ def recipe_batches(recipe, ingredients):
     
   
   
-  calc(recipe, ingredients_left, temp_arr,batches)
+  return calc(recipe, ingredients_left, temp_arr,batches)
   
           
                   
