@@ -3,23 +3,111 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-
+  print('hello')
+  
   ## to get key -- key in recipe
   ## to get value -- value in recipe.values
-  ingredients_left = []
-  for key, key in zip(recipe, ingredients):
-      if len(recipe) > len(ingredients):
-          return 0
+  ingredients_left = ingredients.values()
+  temp_arr = []
+  total_batches = []
+  batches = 0
+
+
+ 
+  def calc(recipe, ingredients_left, temp_arr, batches, done = False ):
+      done = False
+      
+      for key, i in zip(recipe, ingredients_left):
+         print('INGREDIENT KEY')
+         subtract = i - recipe[key]
+         
+         if subtract > 0:
+            temp_arr.append(i - recipe[key])
+            ingredients_left = temp_arr
+            batches += 1
+            
+
+            
+         else:
+            print('I AM DONE')
+            temp_arr.append(i - recipe[key])
+            ingredients_left = temp_arr
+
+
+            done = True
+            #
+            
+             
+        
+       
+      
+      temp_arr = []
+      
+      print('TEMP ARRAY NOW')
+      #print(ingredients_left)
+      print(batches)
+      print(done)
+      
+      if done == True:
+          print('true')
+          print('BATCHES')
+          length = len(ingredients_left)
+          batches = batches/length
+          
+          return batches
+          
       else:
-          ingredients_left.append(ingredients[key] - recipe[key])
+          print('false')
           print(ingredients_left)
-          for i in ingredients_left:
-              if i == 0:
-                  print('we are out')
+          
+          #batches += 1
+          return calc(recipe, ingredients_left, temp_arr,batches) 
+    
+  
+  
+  calc(recipe, ingredients_left, temp_arr,batches)
+  
+          
                   
-                  break
-              else:
-                    print('we are good')
+                 
+      
+
+     # print(ingredients_left - recipe_arr)
+      
+      # if len(recipe) > len(ingredients):
+      #     return 0
+      # else:
+      
+      #     subtract = ingredients[key] - recipe[key]
+      #     if subtract != 0:
+      #         # ingredients_left.append(subtract)
+      #         # print(ingredients_left)
+      #         pass
+      #     elif subtract == 0:
+      #          print('WE ARE DONE')
+      #          done == True
+      #          print(ingredients_left)
+            
+      # for r, i in zip(recipe.values(), ingredients_left): 
+      #     print(len(recipe))
+      #     if len(recipe) > len(ingredients_left):
+      #         print('we are out')
+      #         print(batches)
+          
+      #         break
+      #     else:   
+            
+      #         subtract = i - r
+      #         if subtract != 0: 
+      #             ingredients_left.append(subtract)
+      #         print(ingredients_left)  
+      #         print('we are good')
+      #         batches += 1
+          
+            
+          
+  
+                  
           
           
     
