@@ -10,7 +10,7 @@ def recipe_batches(recipe, ingredients):
 
   ## temp variables
   ingredients_left = ingredients.values() # ingredients left set to the values of ingredients 
-  temp_arr = [] #temp arr set to empth
+  temp_arr = [] #temp arr set to empty
   batches = 0  #batches set to 0
 
 

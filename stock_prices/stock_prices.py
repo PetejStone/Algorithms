@@ -12,7 +12,7 @@ def find_max_profit(prices):
      # loop through n-1 elements
     cur_max = 1 #start at the one index -- start one index because the first element CANT be the biggest
     cur_min = 0  #set current min to zero index because once that max is found, the array stops -- so the current min may be larger than the cur max
-    new_arr = [] # set black array for when splitting
+    new_arr = [] # set back array for when splitting
     for i in range(1, len(prices)): # start at the first index because we don't want to consider the first element
         if prices[i] > prices[cur_max ]: # if the item is greater than the current max,
             cur_max = i #set current max to that index -- this will keep changing until it reaches the highest # in the array
@@ -21,12 +21,12 @@ def find_max_profit(prices):
        
 
         for j in range(len(new_arr)): # new variable for finding min
-            if prices[j] < prices[cur_min]: #if a number is found that is less than the first index
+            if prices[j] < prices[cur_min]: #if a number is found that is less than the first index in NEW ARRAY
                 cur_min = j #set that to the new min
-                print(prices[cur_min])
-    print(f'NEW ARRAY {new_arr}') # new split array
-    print(f'CURRENT MAX {prices[cur_max]}') #current max value
-    print(f'CURRENT_MIN {prices[cur_min]}' ) #current min value
+    # print(prices[cur_min])
+    # print(f'NEW ARRAY {new_arr}') # new split array
+    # print(f'CURRENT MAX {prices[cur_max]}') #current max value
+    # print(f'CURRENT_MIN {prices[cur_min]}' ) #current min value
     subtract = prices[cur_max] - prices[cur_min] #subtract the curent max from the min
     #print(f'SUBTRACT {subtract}')
     return subtract #return subtracted value
